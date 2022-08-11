@@ -1,13 +1,13 @@
-package com.himanshu.starwars
+package com.himanshu.starwars.dataFiles
 
 data class Profiles (
         val count: Long,
         val next: String,
         val previous: Any? = null,
-        val results: List<Result>
+        val results: List<Profile>
 )
 
-data class Result (
+data class Profile (
         val name: String,
         val height: String,
         val mass: String,

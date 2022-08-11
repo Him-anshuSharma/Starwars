@@ -1,14 +1,14 @@
-package com.himanshu.starwars
+package com.himanshu.starwars.retrofit
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-object retrofitInstance{
-    val api:starWarsAPI by lazy{
+object RetrofitInstance{
+    val api: StarWarsAPI by lazy{
         Retrofit.Builder()
             .baseUrl("https://swapi.dev/api/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-            .create(starWarsAPI::class.java)
+            .create(StarWarsAPI::class.java)
     }
 }
