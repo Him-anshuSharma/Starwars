@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import com.himanshu.starwars.dataFiles.Planet
 import com.himanshu.starwars.retrofit.RetrofitInstance
 
 class MainActivity : AppCompatActivity() {
@@ -13,17 +14,10 @@ class MainActivity : AppCompatActivity() {
 
         lifecycleScope.launchWhenCreated {
             try {
-                val profile = RetrofitInstance.api.getPeople()
-                Toast.makeText(applicationContext, profile.body().toString(), Toast.LENGTH_LONG)
-                    .show()
-                val films = RetrofitInstance.api.getFilms()
-                Toast.makeText(applicationContext, films.body().toString(), Toast.LENGTH_LONG)
-                    .show()
-                val planets = RetrofitInstance.api.getPlanets()
-                Toast.makeText(applicationContext, planets.body().toString(), Toast.LENGTH_LONG)
-                    .show()
+                val planet = RetrofitInstance.api.getPlanet("https://swapi.dev/api/planets/1/").body()
+                Toast.makeText(applicationContext,planet.toString(),Toast.LENGTH_SHORT).show()
             } catch (e: Error) {
-                Toast.makeText(applicationContext, e.message.toString(), Toast.LENGTH_LONG).show()
+                Toast.makeText(applicationContext, "Error", Toast.LENGTH_LONG).show()
             }
         }
 
